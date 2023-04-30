@@ -1,3 +1,13 @@
+/* CL_0000_MESIC: System Verilog Code for the Motor Encoder and Servo IC. 
+    INPUTS: SCL: clock of microcontroller coming in.
+            PERIOD: 16-Bit Input, X*10^-6 seconds for period of PWM signal.
+            DUTY:   16-Bit Input, X*10^-6 seconds for duty cycle of PWM signal.
+            S_IN:   8-Bit Input, extent of servo's rotation; input 128 for
+                1.5 ms duty cycle.
+            A:      A Wave of Quadrature Motor Encoder
+            B:      B Wave of Quadrature Motor Encoder
+    OUTPUTS: PWM for 2 servos, 2 general outputs.
+             Speed and direction output for two Motor Encoders.*/
 `default_nettype none
 
 module my_chip (
