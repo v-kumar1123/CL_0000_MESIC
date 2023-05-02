@@ -26,7 +26,7 @@ The Clock Speed of the CL_0000_MESIC is exactly 1 MHz, as the PWM outputs are de
 
 The I/O is pictured here:
 
-![CHIPIO.png]
+![](CHIPIO.png)
 
 ## Hardware Peripherals
 
