@@ -32,6 +32,8 @@ All inputs are serial. In order to output something serially from a microcontrol
 
 For the encoder inputs, connect the A and B inputs to their respective inputs for a single motor. The chip will output the difference between the positive edges of the A and B signals serially from one of its outputs, and the direction that the motor is rotating as a 1 or a 0. 
 
-## Media
+## Media:
+
+CL_0000_MESIC outputting a 2 ms PWM Signal! 
 
 ![](PWM.jpg)
