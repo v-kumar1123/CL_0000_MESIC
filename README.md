@@ -1,29 +1,37 @@
 # (project name)
 
-(your name)
+Varun Kumar
 18-224/624 Spring 2023 Final Tapeout Project
 
 ## Overview
 
-(high-level overview of what your project does, in a few lines)
+The CL_0000_MESIC is a Motor Encoder and PWM driver IC. It outputs PWM (Pulse Width Modulation) from 4 outputs, and takes in A and B inputs from a Quadrature Encoder to deliver speed and direction information about the currently operating motor.
 
-## How it Works
+## How to Work With the CL_0000_MESIC:
 
-(deeper description of your project's internal operations, along with any diagrams. large parts of this can likely be copied from your project design plan and/or RTL checkpoint submission)
+This chip is designed to be used in conjunction with a microcontroller. Ensure that whatever clock your microcontroller is using is connected to the SCL input of the chip; this way, no matter what the microcontroller's clock speed is, the chip will output what your system needs.
 
-To add images, upload them into the repo and use the following format to embed them in markdown:
+All inputs are serial. In order to output something serially from a microcontroller, use the shiftOut function for Arduino. For servos, input a number corresponding to the extent of motion you desire serially, and the chip will output the appropriate PWM for the servo. In order to use general PWM, you must first input the period and the duty cycle of your desired wave, in terms of clock cycles. Keep in mind, the clock frequency of the chip is 1 MHz, so each clock cycle is 1 microsecond. 
 
-![](image1.png)
+For the encoder inputs, connect the A and B inputs to their respective inputs for a single motor. The chip will output the difference between the positive edges of the A and B signals serially from one of its outputs, and the direction that the motor is rotating as a 1 or a 0. 
+
+## The Internals:
+
+In order to save some inputs, every input is serial. On every clock cycle of the input microcontroller, each value on the serial lines is stored in a register, 8 bits for the servo and 16 bits for the general PWM. This register is constantly connected to the PWM output module, but only updates every time the register is "filled". The module ensures that the PWM output stays at HIGH for the appropriate amount of time, such that the receiving device operates as expected.
+
+For the quadrature encoded module, the system is much simpler. The module counts how many clock cycles in which A is HIGH and B is LOW and outputs this difference serially as it goes. For direction determination, depending on which wave sees a positive edge first, the module outputs a 1 or a 0.
 
 ## Inputs/Outputs
 
-(describe what each of the 12 input and 12 output pins are used for; )
+The Clock Speed of the CL_0000_MESIC is exactly 1 MHz, as the PWM outputs are determined on the basis of clock cycles.
 
-(if you have any specific dependency on clock frequency; i.e. for visual effects or for an external interface, explain it here.)
+The I/O is pictured here:
+
+
 
 ## Hardware Peripherals
 
-(if you have any external hardware peripherals such as buttons, LEDs, sensors, etc, please explain them here. otherwise, remove this section)
+In order to use the MESIC, have your desired hardware connected (Servo, DC Motor, or Encoder) and a 5V source for correct operation.
 
 ## Design Testing / Bringup
 
@@ -34,7 +42,3 @@ To add images, upload them into the repo and use the following format to embed t
 ## Media
 
 (optionally include any photos or videos of your design in action)
-
-## (anything else)
-
-If there is anything else you would like to document about your project such as background information, design space exploration, future ideas, verification details, references, etc etc. please add it here. This template is meant to be a guideline, not an exact format that you're required to follow.
