@@ -2,7 +2,7 @@
 
 Varun Kumar's 18-224/624 Spring 2023 Final Tapeout Project
 
-## Overview
+## Overview:
 
 The CL_0000_MESIC is a Motor Encoder and PWM driver IC. It outputs PWM (Pulse Width Modulation) from 4 outputs, and takes in A and B inputs from a Quadrature Encoder to deliver speed and direction information about the currently operating motor.
 
@@ -26,7 +26,7 @@ The Clock Speed of the CL_0000_MESIC is exactly 1 MHz, as the PWM outputs are de
 
 The I/O is pictured here:
 
-
+![]CHIPIO.png
 
 ## Hardware Peripherals
 
