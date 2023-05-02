@@ -1,7 +1,6 @@
 # CL_0000_MESIC: Motor Encoder and Servo/PWM Driver ASIC:
 
-Varun Kumar\n
-18-224/624 Spring 2023 Final Tapeout Project
+Varun Kumar's 18-224/624 Spring 2023 Final Tapeout Project
 
 ## Overview
 
